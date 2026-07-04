@@ -28,24 +28,44 @@ async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
   return response.json() as Promise<T>;
 }
 
-export async function generateLayout(plotGeojson: GeoJSON.Feature, sliderValues?: SliderValues) {
-  const response = await fetch(`${API_BASE_URL}/api/layout/generate`, {
+export async function generateLayout(
+  plotGeojson: GeoJSON.Feature,
+  city: City,
+  zoneCode: string,
+  siteType: string,
+  sliderValues?: SliderValues
+) {
+  return apiFetch<{ project_id: string; layout_options: LayoutOption[] }>("/api/layout/generate", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       plot_geojson: plotGeojson,
-      city: "noida",
-      zone_code: "residential_group_housing",
-      site_type: "empty_plot",
+      city,
+      zone_code: zoneCode,
+      site_type: siteType,
       slider_values: sliderValues
     })
   });
+}
 
-  if (!response.ok) {
-    throw new Error("Could not send the drawn area to VinyasGen");
-  }
-
-  return response.json();
+export async function updateLayout(
+  plotGeojson: GeoJSON.Feature,
+  city: City,
+  zoneCode: string,
+  siteType: string,
+  sliderValues: SliderValues,
+  objectiveProfileKey?: string
+) {
+  return apiFetch<LayoutOption>("/api/layout/update", {
+    method: "POST",
+    body: JSON.stringify({
+      plot_geojson: plotGeojson,
+      city,
+      zone_code: zoneCode,
+      site_type: siteType,
+      slider_values: sliderValues,
+      objective_profile_key: objectiveProfileKey
+    })
+  });
 }
 
 export async function sendCopilotMessage(message: string) {
@@ -63,17 +83,10 @@ export async function sendCopilotMessage(message: string) {
 }
 
 export async function generateReport(layoutOption: LayoutOption) {
-  const response = await fetch(`${API_BASE_URL}/api/report/generate`, {
+  return apiFetch<{ report_id: string; download_url: string }>("/api/report/generate", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ layout_option: layoutOption })
+    body: JSON.stringify({ layout_option: layoutOption, acknowledge_emergency_override: true })
   });
-
-  if (!response.ok) {
-    throw new Error("Report generation failed");
-  }
-
-  return response.text();
 }
 
 export async function generatePdfReport(layoutOption: LayoutOption) {

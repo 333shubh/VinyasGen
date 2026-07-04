@@ -18,6 +18,7 @@ def generate_layout(request: LayoutGenerateRequest) -> LayoutGenerateResponse:
             request.slider_values.model_dump(),
             regulations,
             request.site_type,
+            request.total_width_m,
         )
         return LayoutGenerateResponse(project_id=f"proj_{uuid4().hex[:8]}", layout_options=options)
     except (FileNotFoundError, ValueError) as exc:
@@ -33,7 +34,12 @@ def update_layout(request: LayoutUpdateRequest) -> dict:
             request.slider_values.model_dump(),
             regulations,
             request.site_type,
+            request.total_width_m,
         )
+        if request.objective_profile_key:
+            for option in options:
+                if option["layout_id"] == f"layout_{request.objective_profile_key}":
+                    return option
         return options[0]
     except (FileNotFoundError, ValueError) as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc

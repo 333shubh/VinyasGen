@@ -14,6 +14,11 @@ _to_wgs84 = pyproj.Transformer.from_crs(UTM_43N, WGS84, always_xy=True).transfor
 
 
 def _geometry_from_geojson(geojson: Mapping[str, Any]):
+    if hasattr(geojson, "geom_type"):
+        geom = make_valid(geojson)
+        if geom.is_empty:
+            raise ValueError("Geometry is empty.")
+        return geom
     geometry = geojson.get("geometry", geojson)
     geom = make_valid(shape(geometry))
     if geom.is_empty:

@@ -6,7 +6,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "VinyasGen",
-  description: "Generative intelligence for urban regeneration"
+  description: "Generative intelligence for urban regeneration",
+  icons: {
+    icon: "/favicon.svg"
+  }
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -6,12 +6,14 @@ export default function ImpactDashboard({ layout }: { layout?: LayoutOption }) {
   }
 
   const metrics = [
-    ["Site Area", `${layout.metrics.site_area_sqm} sqm`],
+    ["Parking", `${layout.metrics.parking_spaces} bays`],
     ["Green Cover", `${layout.metrics.green_cover_pct}%`],
-    ["Parking", `${layout.metrics.parking_spaces} spaces`],
-    ["Trees", `${layout.metrics.tree_count}`],
-    ["Score", `${layout.metrics.livability_score}/100`],
-    ["Cost", `Rs ${layout.metrics.estimated_cost_lakh} lakh`]
+    ["Walkable Path", `${layout.metrics.walkable_path_m ?? 0} m`],
+    ["Thermal Score", `${layout.metrics.thermal_score_delta_c ?? 0} C`],
+    ["Drainage", `${layout.metrics.drainage_capacity_mm_hr ?? 0} mm/hr`],
+    ["Compliance", layout.compliance_summary.status],
+    ["Cost", `Rs ${layout.metrics.estimated_cost_lakh} lakh`],
+    ["Emergency", layout.emergency_access?.overall_status ?? "FAIL"]
   ];
 
   return (
@@ -19,7 +21,7 @@ export default function ImpactDashboard({ layout }: { layout?: LayoutOption }) {
       {metrics.map(([label, value]) => (
         <div key={label} className="rounded-md border border-slate-200 bg-mist p-3">
           <p className="text-xs font-medium text-slate-600">{label}</p>
-          <p className="mt-1 text-lg font-semibold text-ink">{value}</p>
+          <p className="mt-1 text-base font-semibold text-ink">{value}</p>
         </div>
       ))}
     </section>

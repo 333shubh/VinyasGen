@@ -27,12 +27,13 @@ def generate_pdf_report(layout: dict) -> tuple[str, Path]:
         Paragraph(f"Organized parking: {metrics.get('parking_spaces', 'n/a')} spaces", styles["BodyText"]),
         Paragraph(f"Trees: {metrics.get('tree_count', 'n/a')}", styles["BodyText"]),
         Paragraph(f"Livability Score: {metrics.get('livability_score', 'n/a')}/100", styles["BodyText"]),
+        Paragraph(f"Emergency Access: {metrics.get('emergency_access', layout.get('emergency_access', {}).get('overall_status', 'n/a'))}", styles["BodyText"]),
         Spacer(1, 12),
         Paragraph("Compliance Summary", styles["Heading2"]),
         Paragraph(f"Overall status: {compliance.get('status', 'n/a')}", styles["BodyText"]),
     ]
     for check in compliance.get("checks", []):
-        story.append(Paragraph(f"{check.get('check')}: {check.get('detail')}", styles["BodyText"]))
+        story.append(Paragraph(f"{check.get('check')}: {check.get('detail')} Citation: {check.get('source_citation', 'n/a')}", styles["BodyText"]))
 
     story.extend(
         [

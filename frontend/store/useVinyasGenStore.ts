@@ -48,7 +48,16 @@ export type LayoutOption = {
     tree_count: number;
     livability_score: number;
     walking_priority: number;
+    walkable_path_m?: number;
+    thermal_score_delta_c?: number;
+    drainage_capacity_mm_hr?: number;
+    emergency_access?: "PASS" | "FAIL";
     estimated_cost_lakh: number;
+  };
+  emergency_access?: {
+    overall_status: "PASS" | "FAIL";
+    violations: Array<{ type: string; detail: string; location?: [number, number] | null }>;
+    clear_path_geojson: GeoJSON.FeatureCollection;
   };
   compliance_summary: {
     status: "valid" | "warning" | "violation";
@@ -93,10 +102,12 @@ type VinyasGenState = {
   reportId: string;
   showProposal: boolean;
   voteSummary: { support: number; concern: number; needs_changes: number };
+  isGeneratingLayouts: boolean;
   setCity: (city: City) => void;
   setZoneCode: (zoneCode: string) => void;
   setSiteType: (siteType: SiteType | null) => void;
   setOfficialBoundary: (feature: GeoJSON.Feature) => void;
+  setActualBoundary: (feature: GeoJSON.Feature | null) => void;
   setRegulation: (regulation: RegulationDocument | null) => void;
   setRegulationStatus: (status: string) => void;
   setBeforeAfterMode: (mode: "before" | "after") => void;
@@ -112,6 +123,7 @@ type VinyasGenState = {
   setReportId: (reportId: string) => void;
   setShowProposal: (showProposal: boolean) => void;
   setVoteSummary: (summary: { support: number; concern: number; needs_changes: number }) => void;
+  setIsGeneratingLayouts: (isGeneratingLayouts: boolean) => void;
 };
 
 export const useVinyasGenStore = create<VinyasGenState>((set) => ({
@@ -145,12 +157,14 @@ export const useVinyasGenStore = create<VinyasGenState>((set) => ({
   reportId: "",
   showProposal: true,
   voteSummary: { support: 0, concern: 0, needs_changes: 0 },
+  isGeneratingLayouts: false,
   disclaimer:
     "VinyasGen is a decision-support and visualization tool. Compliance results are indicative, based on digitized regulatory data, and do not constitute statutory approval. All proposals must be verified with the relevant municipal authority before implementation.",
   setCity: (city) => set({ city }),
   setZoneCode: (zoneCode) => set({ zoneCode }),
   setSiteType: (siteType) => set({ siteType }),
   setOfficialBoundary: (officialBoundary) => set({ officialBoundary, drawnFeature: officialBoundary }),
+  setActualBoundary: (actualBoundary) => set({ actualBoundary }),
   setRegulation: (regulation) => set({ regulation }),
   setRegulationStatus: (regulationStatus) => set({ regulationStatus }),
   setBeforeAfterMode: (beforeAfterMode) => set({ beforeAfterMode }),
@@ -159,11 +173,29 @@ export const useVinyasGenStore = create<VinyasGenState>((set) => ({
   setDisclaimer: (disclaimer) => set({ disclaimer }),
   setDrawnFeature: (drawnFeature) => set({ drawnFeature }),
   setLayoutOptions: (layoutOptions) =>
-    set({
-      layoutOptions,
-      activeLayoutId: layoutOptions[0]?.layout_id
+    set((state) => {
+      const activeLayoutId =
+        layoutOptions.find((layout) => layout.layout_id === state.activeLayoutId)?.layout_id ??
+        layoutOptions[0]?.layout_id;
+      const activeLayout = layoutOptions.find((layout) => layout.layout_id === activeLayoutId);
+      return {
+        layoutOptions,
+        activeLayoutId,
+        activeLayoutGeoJSON: activeLayout?.geojson ?? null,
+        complianceResults: activeLayout?.compliance_summary.checks ?? [],
+        emergencyAccessResult: activeLayout?.emergency_access ?? null
+      };
     }),
-  setActiveLayoutId: (activeLayoutId) => set({ activeLayoutId }),
+  setActiveLayoutId: (activeLayoutId) =>
+    set((state) => {
+      const activeLayout = state.layoutOptions.find((layout) => layout.layout_id === activeLayoutId);
+      return {
+        activeLayoutId,
+        activeLayoutGeoJSON: activeLayout?.geojson ?? null,
+        complianceResults: activeLayout?.compliance_summary.checks ?? [],
+        emergencyAccessResult: activeLayout?.emergency_access ?? null
+      };
+    }),
   setSliderValues: (values) =>
     set((state) => ({
       sliderValues: { ...state.sliderValues, ...values }
@@ -172,5 +204,6 @@ export const useVinyasGenStore = create<VinyasGenState>((set) => ({
   setReportText: (reportText) => set({ reportText }),
   setReportId: (reportId) => set({ reportId }),
   setShowProposal: (showProposal) => set({ showProposal }),
-  setVoteSummary: (voteSummary) => set({ voteSummary })
+  setVoteSummary: (voteSummary) => set({ voteSummary }),
+  setIsGeneratingLayouts: (isGeneratingLayouts) => set({ isGeneratingLayouts })
 }));

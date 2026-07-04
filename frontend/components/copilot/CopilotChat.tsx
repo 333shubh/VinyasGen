@@ -7,7 +7,10 @@ import { useVinyasGenStore } from "@/store/useVinyasGenStore";
 
 export default function CopilotChat() {
   const [message, setMessage] = useState("");
-  const drawnFeature = useVinyasGenStore((state) => state.drawnFeature);
+  const officialBoundary = useVinyasGenStore((state) => state.officialBoundary);
+  const city = useVinyasGenStore((state) => state.city);
+  const zoneCode = useVinyasGenStore((state) => state.zoneCode);
+  const siteType = useVinyasGenStore((state) => state.siteType);
   const sliderValues = useVinyasGenStore((state) => state.sliderValues);
   const setSliderValues = useVinyasGenStore((state) => state.setSliderValues);
   const setLayoutOptions = useVinyasGenStore((state) => state.setLayoutOptions);
@@ -21,10 +24,10 @@ export default function CopilotChat() {
     const response = await sendCopilotMessage(message);
     setCopilotReply(response.reply_text);
     const payload = response.suggested_action?.payload;
-    if (payload && drawnFeature) {
+    if (payload && officialBoundary) {
       const nextValues = { ...sliderValues, ...payload };
       setSliderValues(payload);
-      const layoutResponse = await generateLayout(drawnFeature, nextValues);
+      const layoutResponse = await generateLayout(officialBoundary, city, zoneCode, siteType ?? "gali", nextValues);
       setLayoutOptions(layoutResponse.layout_options);
     }
     setMessage("");

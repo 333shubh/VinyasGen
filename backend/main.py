@@ -5,7 +5,12 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from database import initialize_database
+from routes.analysis_routes import router as analysis_router
+from routes.encroachment_routes import router as encroachment_router
+from routes.layout_routes import router as layout_router
+from routes.project_routes import router as project_router
 from routes.regulation_routes import router as regulation_router
+from routes.report_routes import router as report_router
 
 LEGAL_DISCLAIMER = (
     "VinyasGen is a decision-support and visualization tool. All outputs - layouts, "
@@ -51,3 +56,8 @@ def health_check() -> dict:
 
 
 app.include_router(regulation_router, prefix="/api/regulations", tags=["regulations"])
+app.include_router(layout_router, prefix="/api/layout", tags=["layout"])
+app.include_router(analysis_router, prefix="/api/analysis", tags=["analysis"])
+app.include_router(project_router, prefix="/api/project", tags=["project"])
+app.include_router(report_router, prefix="/api/report", tags=["report"])
+app.include_router(encroachment_router, prefix="/api/encroachment", tags=["encroachment"])
