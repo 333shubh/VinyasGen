@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-07-01",
+  "currency": "INR",
+  "review_status": "pending_review",
+  "items": {
+    "rwa_bench_precast": { "low": 3500, "expected": 4500, "high": 6500, "unit": "per_unit" },
+    "bollard_ms_painted": { "low": 600, "expected": 900, "high": 1400, "unit": "per_unit" },
+    "parking_stall_marking_2w": { "low": 150, "expected": 250, "high": 400, "unit": "per_stall" },
+    "parking_stall_marking_car": { "low": 300, "expected": 450, "high": 700, "unit": "per_stall" },
+    "tree_sapling_with_guard_pit": { "low": 800, "expected": 1200, "high": 2000, "unit": "per_unit" },
+    "open_drain_concrete_300mm": { "low": 800, "expected": 1100, "high": 1500, "unit": "per_running_m" },
+    "covered_drain_with_grating": { "low": 1200, "expected": 1600, "high": 2200, "unit": "per_running_m" },
+    "bioswale_tree_trench": { "low": 900, "expected": 1300, "high": 1900, "unit": "per_running_m" },
+    "street_light_pole_7m_led": { "low": 18000, "expected": 24000, "high": 32000, "unit": "per_pole_installed" },
+    "light_pole_relocation": { "low": 8000, "expected": 12000, "high": 18000, "unit": "per_pole" },
+    "waste_collection_bay_small": { "low": 15000, "expected": 22000, "high": 35000, "unit": "per_unit" },
+    "speed_breaker_rubber": { "low": 2500, "expected": 3500, "high": 5000, "unit": "per_unit" },
+    "directional_signage": { "low": 1800, "expected": 2500, "high": 4000, "unit": "per_sign" }
+  }
+}

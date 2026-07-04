@@ -1,0 +1,18 @@
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Noida Sector 62 sample plot"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [77.39095, 28.61385],
+        [77.39108, 28.61385],
+        [77.39108, 28.61398],
+        [77.39095, 28.61398],
+        [77.39095, 28.61385]
+      ]
+    ]
+  }
+}

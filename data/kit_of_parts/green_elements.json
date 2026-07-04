@@ -1,0 +1,78 @@
+{
+  "version": "1.0.0",
+  "items": [
+    {
+      "part_id": "tree_neem",
+      "category": "tree",
+      "footprint": {
+        "type": "Point",
+        "coordinates": [0, 0]
+      },
+      "metadata": {
+        "name": "Neem Tree (Azadirachta indica)",
+        "canopy_radius_m": 4.0,
+        "estimated_cost_inr": 1200,
+        "carbon_kg_per_year": 22,
+        "native": true
+      }
+    },
+    {
+      "part_id": "tree_peepal",
+      "category": "tree",
+      "footprint": {
+        "type": "Point",
+        "coordinates": [0, 0]
+      },
+      "metadata": {
+        "name": "Peepal Tree (Ficus religiosa)",
+        "canopy_radius_m": 5.0,
+        "estimated_cost_inr": 1000,
+        "carbon_kg_per_year": 28,
+        "native": true
+      }
+    },
+    {
+      "part_id": "tree_gulmohar",
+      "category": "tree",
+      "footprint": {
+        "type": "Point",
+        "coordinates": [0, 0]
+      },
+      "metadata": {
+        "name": "Gulmohar (Delonix regia)",
+        "canopy_radius_m": 4.5,
+        "estimated_cost_inr": 1400,
+        "carbon_kg_per_year": 18,
+        "native": false
+      }
+    },
+    {
+      "part_id": "planter_raised",
+      "category": "planter",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [[[0, 0], [2.0, 0], [2.0, 1.0], [0, 1.0], [0, 0]]]
+      },
+      "metadata": {
+        "name": "Raised Planter Box",
+        "material": "Brick + Cement",
+        "estimated_cost_inr": 2200,
+        "dimensions": "2.0m x 1.0m"
+      }
+    },
+    {
+      "part_id": "bioswale_linear",
+      "category": "drainage",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [[[0, 0], [5.0, 0], [5.0, 1.2], [0, 1.2], [0, 0]]]
+      },
+      "metadata": {
+        "name": "Linear Bioswale",
+        "material": "Native grasses + gravel",
+        "estimated_cost_inr_per_sqm": 1100,
+        "dimensions": "5.0m x 1.2m (scalable)"
+      }
+    }
+  ]
+}

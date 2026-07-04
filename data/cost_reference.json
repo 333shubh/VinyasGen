@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "currency": "INR",
+  "review_status": "pending_review",
+  "items": {
+    "interlocking_paver_sqm": { "low": 450, "expected": 600, "high": 850 },
+    "tree_sapling_with_guard": { "low": 800, "expected": 1200, "high": 2000 },
+    "rwa_bench": { "low": 3500, "expected": 4500, "high": 6500 },
+    "bollard": { "low": 600, "expected": 900, "high": 1400 },
+    "parking_stall_marking": { "low": 200, "expected": 350, "high": 600 },
+    "bioswale_per_sqm": { "low": 700, "expected": 1100, "high": 1800 },
+    "permeable_paver_sqm": { "low": 550, "expected": 750, "high": 1100 },
+    "waste_bin": { "low": 1200, "expected": 1800, "high": 2800 },
+    "signage_unit": { "low": 800, "expected": 1500, "high": 2500 },
+    "cycle_stand": { "low": 2500, "expected": 3800, "high": 5500 },
+    "planter_box": { "low": 1500, "expected": 2200, "high": 3500 },
+    "footpath_per_sqm": { "low": 350, "expected": 500, "high": 750 },
+    "road_marking_per_m": { "low": 30, "expected": 50, "high": 80 },
+    "street_light": { "low": 4500, "expected": 7000, "high": 12000 }
+  }
+}

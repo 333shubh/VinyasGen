@@ -1,0 +1,106 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-07-01",
+  "review_status": "pending_review",
+  "materials": [
+    {
+      "material_id": "grey_concrete",
+      "name": "Standard Grey Concrete",
+      "temp_reduction_c": 0,
+      "cost_inr_per_sqm": { "low": 280, "expected": 350, "high": 450 },
+      "availability": "universal",
+      "maintenance_level": "low",
+      "runoff_coefficient": 0.9,
+      "thermal_mass": "high",
+      "notes": "Baseline material. High heat absorption."
+    },
+    {
+      "material_id": "shahabad_stone",
+      "name": "Shahabad Stone (Natural)",
+      "temp_reduction_c": 3.5,
+      "cost_inr_per_sqm": { "low": 480, "expected": 550, "high": 650 },
+      "availability": "north_india",
+      "maintenance_level": "low",
+      "runoff_coefficient": 0.7,
+      "thermal_mass": "medium",
+      "notes": "Naturally porous. Widely used in Delhi NCR. Cools significantly."
+    },
+    {
+      "material_id": "kota_stone",
+      "name": "Kota Stone (Natural)",
+      "temp_reduction_c": 2.5,
+      "cost_inr_per_sqm": { "low": 420, "expected": 480, "high": 560 },
+      "availability": "most_cities",
+      "maintenance_level": "low",
+      "runoff_coefficient": 0.75,
+      "thermal_mass": "medium",
+      "notes": "Rajasthan origin, widely available. Good thermal performance."
+    },
+    {
+      "material_id": "ilc_interlocking_pavers",
+      "name": "ILC Interlocking Brick Pavers (Red/Buff)",
+      "temp_reduction_c": 2.5,
+      "cost_inr_per_sqm": { "low": 520, "expected": 600, "high": 720 },
+      "availability": "universal",
+      "maintenance_level": "medium",
+      "runoff_coefficient": 0.6,
+      "thermal_mass": "medium",
+      "notes": "Gaps between pavers allow some drainage. Standard municipal choice."
+    },
+    {
+      "material_id": "sand_set_brick_pavers",
+      "name": "Sand-Set Clay Brick Pavers",
+      "temp_reduction_c": 3.5,
+      "cost_inr_per_sqm": { "low": 460, "expected": 520, "high": 620 },
+      "availability": "universal",
+      "maintenance_level": "medium",
+      "runoff_coefficient": 0.55,
+      "thermal_mass": "low",
+      "notes": "Sand bed allows infiltration. Good for narrow footpaths."
+    },
+    {
+      "material_id": "cool_coat_asphalt",
+      "name": "Cool-Coat Reflective Asphalt Coating",
+      "temp_reduction_c": 6.5,
+      "cost_inr_per_sqm": { "low": 150, "expected": 180, "high": 240 },
+      "availability": "major_cities",
+      "maintenance_level": "high",
+      "runoff_coefficient": 0.85,
+      "thermal_mass": "medium",
+      "notes": "Applied over existing asphalt. High temperature reduction but needs periodic reapplication."
+    },
+    {
+      "material_id": "compressed_earth_blocks",
+      "name": "Compressed Stabilized Earth Blocks",
+      "temp_reduction_c": 4.5,
+      "cost_inr_per_sqm": { "low": 380, "expected": 420, "high": 500 },
+      "availability": "regional",
+      "maintenance_level": "medium",
+      "runoff_coefficient": 0.5,
+      "thermal_mass": "low",
+      "notes": "Low embodied carbon. Good for green-rated projects."
+    },
+    {
+      "material_id": "grass_gravel_grid",
+      "name": "Grass/Gravel Parking Grid",
+      "temp_reduction_c": 7,
+      "cost_inr_per_sqm": { "low": 620, "expected": 700, "high": 850 },
+      "availability": "universal",
+      "maintenance_level": "high",
+      "runoff_coefficient": 0.2,
+      "thermal_mass": "low",
+      "notes": "Best thermal and drainage performance. Suitable for low-traffic parking only."
+    },
+    {
+      "material_id": "permeable_concrete",
+      "name": "Permeable Concrete",
+      "temp_reduction_c": 5,
+      "cost_inr_per_sqm": { "low": 750, "expected": 850, "high": 1000 },
+      "availability": "major_cities",
+      "maintenance_level": "high",
+      "runoff_coefficient": 0.25,
+      "thermal_mass": "medium",
+      "notes": "Excellent drainage and thermal performance. Higher cost. Requires maintenance to prevent clogging."
+    }
+  ]
+}

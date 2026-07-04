@@ -1,0 +1,34 @@
+{
+  "city": "gurgaon",
+  "authority": "DTCP Haryana",
+  "zone_code": "group_housing",
+  "source_document": "Haryana Building Code 2017 (as amended) - PLACEHOLDER, verify with official source",
+  "last_updated": "2026-06-15",
+  "review_status": "pending_review",
+  "constraints": {
+    "max_far": 2.75,
+    "max_ground_coverage_pct": 0.35,
+    "min_setback_front_m": 5.0,
+    "min_setback_side_m": 3.0,
+    "min_setback_rear_m": 4.0,
+    "max_building_height_m": 38,
+    "min_green_area_pct": 0.20,
+    "parking_norms": {
+      "two_wheeler_per_100sqm": 1.0,
+      "four_wheeler_per_100sqm": 1.25,
+      "min_aisle_width_m": 6.0
+    },
+    "min_road_width_for_access_m": 12.0,
+    "fire_safety": {
+      "min_clear_access_width_m": 4.5,
+      "max_dead_end_length_m": 30
+    }
+  },
+  "incentives": [
+    {
+      "name": "TOD Zone FAR Bonus",
+      "condition": "within_500m_of_metro",
+      "effect": { "max_far_bonus": 0.5 }
+    }
+  ]
+}

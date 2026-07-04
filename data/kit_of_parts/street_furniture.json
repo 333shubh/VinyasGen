@@ -1,0 +1,89 @@
+{
+  "version": "1.0.0",
+  "items": [
+    {
+      "part_id": "bench_standard",
+      "category": "seating",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [[[0, 0], [1.8, 0], [1.8, 0.6], [0, 0.6], [0, 0]]]
+      },
+      "metadata": {
+        "name": "Standard RWA Bench",
+        "material": "Precast Concrete",
+        "estimated_cost_inr": 4500,
+        "dimensions": "1.8m x 0.6m"
+      }
+    },
+    {
+      "part_id": "bollard_steel",
+      "category": "traffic_calming",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [[[0, 0], [0.15, 0], [0.15, 0.15], [0, 0.15], [0, 0]]]
+      },
+      "metadata": {
+        "name": "Steel Bollard",
+        "material": "Galvanized Steel",
+        "estimated_cost_inr": 900,
+        "dimensions": "0.15m diameter"
+      }
+    },
+    {
+      "part_id": "waste_bin_dual",
+      "category": "sanitation",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [[[0, 0], [0.6, 0], [0.6, 0.4], [0, 0.4], [0, 0]]]
+      },
+      "metadata": {
+        "name": "Dual Waste Bin (Wet/Dry)",
+        "material": "HDPE Plastic",
+        "estimated_cost_inr": 1800,
+        "dimensions": "0.6m x 0.4m"
+      }
+    },
+    {
+      "part_id": "cycle_stand_rack",
+      "category": "mobility",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [[[0, 0], [2.0, 0], [2.0, 0.5], [0, 0.5], [0, 0]]]
+      },
+      "metadata": {
+        "name": "Cycle Stand Rack (5 cycles)",
+        "material": "Mild Steel",
+        "estimated_cost_inr": 3800,
+        "dimensions": "2.0m x 0.5m"
+      }
+    },
+    {
+      "part_id": "parking_stall_car",
+      "category": "parking",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [[[0, 0], [2.5, 0], [2.5, 5.0], [0, 5.0], [0, 0]]]
+      },
+      "metadata": {
+        "name": "Car Parking Bay",
+        "material": "Road Marking Paint",
+        "estimated_cost_inr": 350,
+        "dimensions": "2.5m x 5.0m"
+      }
+    },
+    {
+      "part_id": "parking_stall_twowheeler",
+      "category": "parking",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [[[0, 0], [1.0, 0], [1.0, 2.5], [0, 2.5], [0, 0]]]
+      },
+      "metadata": {
+        "name": "Two-Wheeler Parking Bay",
+        "material": "Road Marking Paint",
+        "estimated_cost_inr": 200,
+        "dimensions": "1.0m x 2.5m"
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+node_modules/
+.next/
+__pycache__/
+.pytest_cache/
+.venv/
+venv/
+*.pyc
+backend/vinyasgen.db
+backend/vinyasgen.sqlite3
+.env
